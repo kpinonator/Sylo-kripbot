@@ -246,7 +246,7 @@ function loadGuild(req, res, next) {
   if (req.session) req.session.lastGuild = req.guild.id;
   next();
 }
-router.use('/:guildId', loadGuild, requireGuildAdmin);
+router.use('/:guildId', loadGuild, requireAuth);
 
 router.get('/', (req, res) => res.redirect('/'));
 router.get('/:guildId', (req, res) => res.redirect(`/guilds/${req.params.guildId}/overview`));
